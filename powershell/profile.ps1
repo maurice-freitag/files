@@ -1,5 +1,7 @@
 # Environment
 $env:LC_ALL = "C.UTF-8"
+$env:POSH_GIT_ENABLED = $true
+Set-Variable -Name "repos" -Value $(Join-Path $env:USERPROFILE "source/repos") -Scope global
 
 # PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
@@ -7,21 +9,10 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+"' -Function MenuComplete
 
 # Modules 
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
 # Posh
-try {
-    Copy-Item $(Join-Path $PSScriptRoot '.\PoshThemes\*') $(Join-Path $env:USERPROFILE '\Documents\PowerShell\PoshThemes') -Force -Recurse
-}
-catch {
-    # just ignore it
-}
-Set-Theme Material-modded
+oh-my-posh --init --shell pwsh --config $(Join-Path $PSScriptRoot '.\PoshThemes\material-modded.omp.json') | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource History
 $GitPromptSettings.EnableStashStatus = $true
-$Global:ThemeSettings.Colors.PromptBackgroundColor = 0x4483B7
-$Global:ThemeSettings.Colors.GitDefaultColor = 0x30ed62
-$Global:ThemeSettings.Colors.SessionInfoBackgroundColor = 0x818181
-
