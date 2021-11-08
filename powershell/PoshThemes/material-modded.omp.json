@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title": true,
+  "console_title_style": "folder",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "",
+            "text": "<#C591E8>\u276F</><#69FF94>\u276F</>"
+          }
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#56B6C2",
+          "properties": {
+            "prefix": "",
+            "postfix": "",
+            "style": "full",
+            "folder_separator_icon": "/",
+            "mapped_locations": {
+              "C:\\FASTEC\\development": "dev",
+              "C:\\Users\\freitag\\source\\repos": "repos"
+            }
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "text": "::"
+          }
+        },
+        {
+          "type": "poshgit",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "",
+            "postfix": ""
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "text": "::"
+          }
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#66F68F",
+          "properties": {
+            "prefix": "",
+            "time_format": "15:04"
+          }
+        }
+      ]
+    }
+  ]
+}
