@@ -1,6 +1,8 @@
 # Environment
 $env:LC_ALL = "C.UTF-8"
 $env:POSH_GIT_ENABLED = $true
+$env:OPENSSL_CONF = "C:\certs\openssl.cnf"
+
 Set-Variable -Name "repos" -Value $(Join-Path $env:USERPROFILE "source/repos") -Scope global
 
 # PSReadLine
