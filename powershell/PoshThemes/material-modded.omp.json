@@ -1,52 +1,58 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title": true,
-  "console_title_style": "folder",
+  "console_title_template": "{{.Folder}}", 
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#ffffff",
-          "properties": {
-            "prefix": "",
-            "text": "<#C591E8>\u276F</><#69FF94>\u276F</>"
-          }
+          "style": "plain",
+          "template": "<#C591E8>\u276f</><#69FF94>\u276f</> ",
+          "type": "text"
         },
         {
-          "type": "path",
-          "style": "plain",
           "foreground": "#56B6C2",
           "properties": {
-            "prefix": "",
-            "postfix": "",
-            "style": "full",
             "mapped_locations": {
-            }
-          }
+              "C:\\Users\\freitag\\source\\repos": "repos ",
+              "C:\\fastec\\development": "dev "
+            },
+            "style": "full"
+          },
+          "style": "plain",
+          "template": "{{ .Path }}",
+          "type": "path"
         },
         {
-          "type": "poshgit",
           "style": "plain",
-          "foreground": "#ffffff",
-          "properties": {
-            "prefix": "",
-            "postfix": ""
-          }
-        },       
+          "foreground": "#48ddce",
+          "template": " :: {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        },
         {
-          "type": "time",
-          "style": "plain",
           "foreground": "#66F68F",
           "properties": {
-            "prefix": " :: ",
             "time_format": "15:04"
+          },
+          "style": "plain",
+          "template": ":: {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        {
+          "type": "executiontime",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#8800dd",
+          "template": " <#fefefe>\ufbab</> ",
+          "properties": {
+            "threshold": 500,
+            "style": "austin"
           }
         }
-      ]
+      ],
+      "type": "prompt"
     }
-  ]
+  ],
+  "version": 2
 }

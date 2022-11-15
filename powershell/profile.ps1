@@ -19,6 +19,7 @@ Set-Variable -Name "repos" -Value $(Join-Path $env:USERPROFILE "source/repos") -
 # PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadLineKeyHandler -Chord 'Ctrl+"' -Function MenuComplete
+Set-PSReadlineOption -BellStyle None
 
 # Modules 
 Import-Module posh-git
