@@ -1,14 +1,3 @@
-function global:PromptWriteErrorInfo() {
-if ($global:GitPromptValues.DollarQuestion) { return }
-
-    if ($global:GitPromptValues.LastExitCode) {
-        "`e[31m(" + $global:GitPromptValues.LastExitCode + ") `e[0m"
-    }
-    else {
-        "`e[31m! `e[0m"
-    }
-}
-
 # Environment
 $env:LC_ALL = "C.UTF-8"
 $env:POSH_GIT_ENABLED = $true
@@ -23,7 +12,6 @@ Set-PSReadlineOption -BellStyle None
 
 # Modules 
 Import-Module posh-git
-Import-Module Terminal-Icons
 
 # Posh
 oh-my-posh --init --shell pwsh --config $(Join-Path $PSScriptRoot '.\PoshThemes\material-modded.omp.json') | Invoke-Expression
@@ -32,3 +20,14 @@ Set-PSReadLineOption -PredictionSource History
 $GitPromptSettings.EnableStashStatus = $true
 $GitPromptSettings.BeforeStatus.Text = " :: ["
 $GitPromptSettings.AfterStatus.Text = "]"
+
+function global:PromptWriteErrorInfo() {
+    if ($global:GitPromptValues.DollarQuestion) { return }
+
+    if ($global:GitPromptValues.LastExitCode) {
+        "`e[31m(" + $global:GitPromptValues.LastExitCode + ") `e[0m"
+    }
+    else {
+        "`e[31m! `e[0m"
+    }
+}
