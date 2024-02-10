@@ -11,6 +11,7 @@
     cp = cherry-pick
     po = !CURRENT=$(git symbolic-ref --short HEAD) && git push -u origin $CURRENT
     ro = !CURRENT=$(git symbolic-ref --short HEAD) && git reset --hard origin/$CURRENT
+    p = pull -p
 
 [merge]
     tool = vscode

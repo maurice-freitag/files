@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "console_title_template": "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
+  "version": 2,
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#ffffff",
@@ -11,43 +12,74 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#ffffff",
           "style": "plain",
-          "template": "<#C591E8>\u276f</><#69FF94>\u276f</> ",
+          "template": "<#fbe9e8>\u276f</><#d7ebdd>\u276f</> ",
           "type": "text"
         },
         {
-          "foreground": "#56B6C2",
+          "foreground": "#79bd8f",
+          "properties": {
+            "time_format": "15:04"
+          },
+          "style": "plain",
+          "template": "{{ .CurrentDate | date .Format }} :: ",
+          "type": "time"
+        },
+        {
+          "foreground": "#8dc1da",
           "properties": {
             "mapped_locations": {
-              "C:\\Users\\freitag\\source\\repos": "repos ",
-              "C:\\fastec\\development": "dev "
+              "C:\\Users\\freitag\\source\\repos": "repos",
+              "C:\\fastec\\development": "dev"
             },
             "folder_separator_icon": "/",
             "style": "full"
           },
           "style": "plain",
-          "template": "{{ .Path }}",
+          "template": "{{ .Path }} ",
           "type": "path"
         },
         {
           "style": "plain",
-          "foreground": "#48ddce",
-          "template": " :: {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} ",
+          "foreground": "#F2836B",
+          "template": ":: {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
-          "foreground": "#66F68F",
+          "type": "kubectl",
+          "style": "powerline",
+          "foreground": "#ECA869",
+          "template": ":: {{.Context}} ",
           "properties": {
-            "time_format": "15:04"
+            "context_aliases": {
+              "rancher-desktop": "local"
+            }
+          }
+        },
+        {
+          "foreground": "#F2E1AC",
+          "properties": {
+            "shell": "powershell",
+            "command": "asparagus.exe status"
           },
           "style": "plain",
-          "template": ":: {{ .CurrentDate | date .Format }} ",
-          "type": "time"
+          "template": ":: {{ .Output }} ",
+          "type": "command"
         }
       ],
       "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#CD4277",
+          "style": "plain",
+          "template": "$ ",
+          "type": "text"
+        }
+      ]
     }
-  ],
-  "version": 2
+  ]
 }
